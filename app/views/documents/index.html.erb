@@ -1,6 +1,6 @@
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Documentos</h3>
+      <h3 class="panel-title text-center"  >Documentos</h3>
     </div>
     <table class="table table-bordered">
     <thead>
@@ -16,15 +16,23 @@
       <% @documents.each do |document| %>
         <tr>
           <td><%= document.titulo %></td>
-          <td><%= document.categoria %></td>
+          <td><%= get_categoria(document.categoria) %></td>
           <td><%= document.descripcion %></td>
-          <td>
+          <td class= "text-center">
             <%= link_to document, class:'btn btn-default btn-sm' do %>
-              <i class="glyphicon glyphicon-eye-open"></i>
+              <i class="glyphicon glyphicon-eye-open "></i>
+            <% end %>
+          </td>         
+          <td class= "text-center">
+          <%= link_to document, class: 'btn btn-default btn-sm'  do %>     
+            <i class= "glyphicon glyphicon-pencil"></i>
+          </td>
+          <% end %>
+
+          <td><%= link_to document, class:'btn btn-default btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class= "glyphicon glyphicon-trash"></i>
             <% end %>
           </td>
-          <td><%= link_to 'Edit', edit_document_path(document) %></td>
-          <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
