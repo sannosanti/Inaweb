@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @document.titulo %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= get_categoria(@document.categoria) %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @document.descripcion %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %> |
+<%= link_to 'Pdf',  @document.archivo.url, target: '_blank' %>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class= "col-md-offset-3 col-md-6">
+<%= form_for(document) do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field" placeholder="Ingrese el nombre">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo, class:'form-control' %>
+  </div>
+<br>
+  <div class= "field">
+    <%= f.label :categoria %>
+    <%= f.number_field :categoria, class:'form-control' %>
+  </div>
+<br>
+  <div class= "field">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion, class:'form-control rows= 3></textarea' %>
+  </div>
+<br>
+<hr>
+   <%= f.file_field :archivo, class:'btn btn-default' %>
+
+   <br>
+
+  <div class="actions">
+    <%= f.submit 'Ingresar', class: 'btn btn-danger' %>
+    <% unless @document.new_record? %>
+    <%= link_to 'Mostrar', @document,  class:'btn btn-default' %>
+    <% end %>
+    <%= link_to 'Volver', documents_path, class:'btn btn-default' %>
+    <%= link_to 'Nuevo', documents_path, class:'btn btn-default' %>
+  </div>
+<% end %>
+</div>
+
+</div>
