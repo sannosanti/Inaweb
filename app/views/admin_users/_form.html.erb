@@ -1,0 +1,46 @@
+<div class="row">
+  <div class= "col-md-offset-3 col-md-6">
+<%= form_for(user, url: @url, method: @method) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field" placeholder="Ingrese el nombre">
+    <%= f.label :email %>
+    <%= f.text_field :email, class:'form-control' %>
+  </div>
+<br>
+  <div class= "field">
+    <%= f.label :password %>
+    <%= f.password_field :password, class:'form-control' %>
+  </div>
+<br>
+  <div class= "field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class:'form-control' %>
+  </div>
+<br>
+ <div class= "field">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit 'Ingresar', class: 'btn btn-danger' %>
+    <% unless @user.new_record? %>
+    <%= link_to 'Mostrar', admin_users_path(@user),  class:'btn btn-default' %>
+    <% end %>
+    <%= link_to 'Volver', admin_users_path, class:'btn btn-default' %>
+  </div>
+<% end %>
+</div>
+
+</div>

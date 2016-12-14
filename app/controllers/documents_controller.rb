@@ -61,6 +61,10 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def mostrar_categoria
+      @documents = Document.all.where(categoria: params[:categoria_id])
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document

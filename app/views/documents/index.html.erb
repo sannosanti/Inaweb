@@ -10,7 +10,13 @@
         <th>Descripcion</th>
         <th colspan="3"></th>
       </tr>
+      <br>
     </thead>
+    <%= form_tag mostrar_categoria_documents_url, method: :get do %>
+    <%= select_tag :categoria_id, options_for_select(categorias), class:'btn btn-default' %>
+    |
+    <%= submit_tag 'ir', class: 'btn btn-default'  %>
+  <% end %>
 
     <tbody>
       <% @documents.each do |document| %>
@@ -41,5 +47,5 @@
   </div>
 
   <br>
-<div class= "text-center"><%= link_to 'Nuevo Documento', new_document_path, class:'btn btn-default' %></div>
+<div class= "text-center"><%= link_to 'Nuevo Documento', new_document_path, class:'btn btn-info' %></div>
   
