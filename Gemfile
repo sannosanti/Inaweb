@@ -54,3 +54,5 @@ gem "paperclip", "~> 5.0.0"
 gem 'devise'
 
 gem "font-awesome-rails"
+
+gem 'cancancan'

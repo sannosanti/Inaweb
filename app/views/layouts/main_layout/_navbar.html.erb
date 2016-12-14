@@ -12,9 +12,6 @@
         <li class="nav-item">
                <%= link_to 'Documentos', documents_path , class: 'nav-link page-scroll'%>
         </li>
-        <li class="nav-item">  
-            <%= link_to 'Roles', roles_path , class: 'nav-link page-scroll'%>
-        </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#three">diseño</a>
         </li>
@@ -25,6 +22,14 @@
 
           <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#aboutModal">About</a>
         </li >
+        <% if user_signed_in?%>
+          <li>
+            <li class="nav-item">  
+            <%= link_to 'Roles', roles_path , class: 'nav-link page-scroll'%>
+        <br>
+        </li>
+          </li class="nav-item">
+        <% end%>
         <% if user_signed_in? %>
              <li class="nav-item">
              <%= link_to 'Usuarios', admin_users_path , class: 'nav-link page-scroll'%>
@@ -34,6 +39,11 @@
       </ul>
 
       <ul class="nav navbar-nav pull-right">
+       <li class="nav-item">
+       <%= link_to(current_user.email, '#', class: 'nav-link page-scroll') %>
+            
+       </li> 
+
        <% if user_signed_in? %>
        <li class="nav-item">
         <%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete, class: 'nav-link page-scroll') %>
