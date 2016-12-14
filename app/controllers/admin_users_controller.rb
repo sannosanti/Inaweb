@@ -15,14 +15,10 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /documents/new
   def new
     @user = User.new
-    @url = admin_users_url
-    @method = :post
   end
 
   # GET /documents/1/edit
   def edit
-    @url = admin_user_url
-    @method = :put
   end
 
   # POST /documents
@@ -32,7 +28,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_user_url(@user), notice: 'Document was successfully created.' }
+        format.html { redirect_to admin_users_url, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @user}
       else
         format.html { render :new }
@@ -44,9 +40,14 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_user_url(@user), notice: 'Document was successfully updated.' }
+        format.html { redirect_to admin_users_url, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -73,6 +74,6 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
+      params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :role_id)
     end
 end

@@ -10,8 +10,10 @@
           <%= link_to 'INAMOD', root_path , class: 'nav-link page-scroll'%>
         </li>
         <li class="nav-item">
-
-          <%= link_to 'Documentos', documents_path , class: 'nav-link page-scroll'%>
+               <%= link_to 'Documentos', documents_path , class: 'nav-link page-scroll'%>
+        </li>
+        <li class="nav-item">  
+            <%= link_to 'Roles', roles_path , class: 'nav-link page-scroll'%>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#three">diseño</a>
@@ -22,8 +24,13 @@
         <li class="nav-item">
 
           <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#aboutModal">About</a>
-        </li>
-
+        </li >
+        <% if user_signed_in? %>
+             <li class="nav-item">
+             <%= link_to 'Usuarios', admin_users_path , class: 'nav-link page-scroll'%>
+             </li>
+        <% end %>       
+        
       </ul>
 
       <ul class="nav navbar-nav pull-right">
