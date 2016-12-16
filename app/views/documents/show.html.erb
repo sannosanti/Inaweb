@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
 <p>
   <strong>Titulo:</strong>
@@ -15,6 +15,6 @@
   <%= @document.descripcion %>
 </p>
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %> |
-<%= link_to 'Pdf',  @document.archivo.url, target: '_blank' %>
+<%= link_to 'Editar', edit_document_path(@document) %> |
+<%= link_to 'Volver', documents_path %> |
+<%= link_to 'Generar PDF',  @document.archivo.url, target: '_blank' %>
